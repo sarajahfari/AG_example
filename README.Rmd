@@ -14,10 +14,10 @@ Before running throught the example bellow get an intution for the method and st
 
 1. Getting started
 ----------------------
-Ancestral Graphs relies on a number of packages such as graphs, RBGL and ggm. These packages are updated in a fast rate, and for now you will have to run an older version of R (version 3.0.2) in order to use the validated versions of these packages for AG. You can find this version in the folder AG_codes/Rpackage_checked. 
+Ancestral Graphs relies on a number of packages such as graphs, RBGL and ggm. These packages are updated in a fast rate, and for now you will have to run an older version of R (version 3.0.2) in order to use the validated versions of these packages for AG. You can find the checked packages versions in the folder AG_codes/Rpackage_checked. 
 
 For me it works really well to use [RSwich](https://support.rstudio.com/hc/en-us/articles/200486138-Using-Different-Versions-of-R) to swich between the newest version of R and this older version for AG. After installing the older version of R, and using RSwich make sure that you are running R version 3.0.2 (2013-09-25).   
 
-For a workflow please read the AG_Readme.pdf. All of these steps are also in the *EvaluateStop_example.R*. If you have questions let me know. Have fun!
+For an elaborate workflow please read the AG_Readme.pdf. All of these steps are also in the *EvaluateStop_example.R*. If you have questions let me know. Have fun!
 
 

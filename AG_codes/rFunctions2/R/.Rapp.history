@@ -1,0 +1,804 @@
+cor(SignalROI_noF[[10]][,1:3], slowing)
+cor(SignalROI_noF[[10]][,1:3], RLwl.med)
+cor(SignalROI_noF[[10]][,1:3], RLwl.ac)
+cor(SignalROI_noF[[10]][,1:3], RL.model[[1]])
+cor(SignalROI_noF[[10]][,1:3], Qd)
+cor(SignalROI_noF[[12]][,1:3], slowing)
+cor(SignalROI_noF[[12]][,1:3], RLwl.med)
+cor.test(SignalROI_noF[[12]][,2], RLwl.med[,2])
+cor(SignalROI_noF[[12]][,1:3], RLwl.ac)
+cor(SignalROI_noF[[12]][,1:3], RL.model[[1]])
+cor(SignalROI_noF[[12]][,1:3], Qd)
+cor(STOP[,1],SignalROI_noF[[12]][-which(rownames(b.Topstn)%in%Ex.stop),1:3])
+cor(SignalROI_noF[[1]][,1:3], slowing)
+cor(SignalROI_noF[[1]][,1:3], RLwl.med)
+cor(SignalROI_noF[[1]][,1:3], RLwl.ac)
+cor(SignalROI_noF[[1]][,1:3], RL.model[[1]])
+cor(SignalROI_noF[[1]][,1:3], Qd)
+plot(SignalROI_noF[[1]][,2], Qd[,2])
+cor(STOP[,1],SignalROI_noF[[1]][-which(rownames(b.Topstn)%in%Ex.stop),1:3])
+194+663
+30*1.5
+45*350
+datadir='/home/ni_20/VAC-BE/Sylco/RL_model/MSliberal' # set dir to MSdir#
+extdir= '/home/ni_20/VAC-BE/Sylco/RL_model/scripts' # scripts stan files on servers#
+#extout= '/home/ni_20/VAC-BE/Sylco/RL_model/Outputdir/conservative/Test' # ouput stan on servers#
+extout= '/home/ni_20/VAC-BE/Sylco/RL_model/Outputdir/liberal/Test' # ouput stan on servers#
+setwd(datadir)#
+#
+# load data#
+data=list.files()#
+ppn=data[grep('sc',data)]
+18*20
+360/3
+0.25*120
+2*360
+720/60
+18/3
+120/6
+30/6
+0.25*30
+0.25*32
+0.25*24
+360/24
+15/3
+24/4
+169:2016
+169:216
+24*9
+5*9
+5*24
+15*24
+23-8
+13568/12
+source('~/Desktop/Dropbox/scripts/CiRaS/scanner/Graph/FitRL-test/conditions_yDat_RLtest.R', chdir = TRUE)#
+#----------------------------------------------------------------------------------------------------------##
+# 											read in scripts#
+#----------------------------------------------------------------------------------------------------------##
+#
+# define dirs#
+scriptdir = "~/Desktop/Dropbox/GenDocuments/PHD/scripts/Graphs/Basic"#
+setwd(scriptdir)#
+source('AGfunctions2.R')#
+#
+# sourece needed files#
+setwd("~/Desktop/Dropbox/GenDocuments/PHD/scripts/Graphs/rFunctions2/R")#
+#
+ # source the scripts for beta-normalization#
+ 	a=list.files()#
+ 	for (b in 1:length(a))#
+ 	{ source(a[b])}
+ls()
+cond1 = list(ewwL,ewwR,ellL,ellR,eBwlL,eBwlR,eMwlL,eMwlR,eSwlL,eSwlR)#
+names(cond1)=c('ewwL','ewwR','ellL','ellR','BwlL','BwlR','MwlL','MwlR','SwlL','SwlR')
+str(yDat.RLTest.noF)
+str(yDat.RLTest.noF[[1]])
+str(yDat.RLTest.noF[[1]][cond1,])
+str(yDat.RLTest.noF[[1]][[1]][cond1,])
+str(yDat.RLTest.noF[[1]][cond1[1],])
+str(yDat.RLTest.noF[[1]][cond1[[1]],])
+cond1
+cond1[[1]]
+cond1[[1]][[1]]
+str(yDat.RLTest.noF[[1]][cond1[[1]][[1]],])
+MGO=c("PvmPFCNoventri" ,"preSMAsmall", #
+		"maxSTN25exc","GPe30exc","maxGPi30exc", "DLPFCposterior" ,#
+		"Thalamus40exc","PstriatumNoVentri","MotorBA4")#
+# direct + indirect + hyperdirect	(winning model ww,ll, wl and avoid-appraoch strong errors +correct)		#
+Model=makeMG(dg=DAG(#
+					PstriatumNoVentri~ preSMAsmall +PvmPFCNoventri + DLPFCposterior,#
+					maxSTN25exc~preSMAsmall +PvmPFCNoventri+ DLPFCposterior,#
+					GPe30exc~maxSTN25exc,#
+					maxGPi30exc~PstriatumNoVentri+maxSTN25exc+GPe30exc,#
+					Thalamus40exc~maxGPi30exc,#
+					MotorBA4~Thalamus40exc			#
+					),ug=UG(~preSMAsmall*PvmPFCNoventri*DLPFCposterior))
+C.Lab = MGO#
+cond=cond4
+cond4=list(ewwL,ewwR,ellL,ellR,eBwlL,eBwlR,eMwlL,eMwlR,eSwlL,eSwlR,esApAL, esApAR, esAvBL,esAvBR)#
+names(cond4)=c('ewwL','ewwR','ellL','ellR','BwlL','BwlR','MwlL','MwlR','SwlL','SwlR','esApAL', 'esApAR', 'esAvBL','esAvBR')
+C.Lab = MGO#
+cond=cond4
+str(yDat.RLTest.noF[[1]][cond[[1]][[1]],C.Lab])
+yDat.RLTest.noF[[1]][cond[[1]][[1]],C.Lab]
+library(corrplot)
+corrplot(cor(yDat.RLTest.noF[[1]][cond[[1]][[1]],C.Lab]))
+names(yDat.RLTest.noF)
+EwwL=list() #
+EwwR=list()#
+EllL=list()#
+EllR=list()#
+EBwlL=list()#
+EBwlR=list()#
+EMwlL=list()#
+EMwlR=list()#
+ESwlL=list()#
+ESwlR=list()#
+EsApAL=list()#
+EsApAR=list()#
+EsAvBL=list()#
+EsAvBR=list()
+yDat[[1]]
+yDat[[1]][cond[[1]][[1]],C.Lab]
+yDat.RLTest.noF[[1]][cond[[1]][[1]],C.Lab]
+x11()
+corrplot(cor(yDat[[1]][cond[[1]][[1]],C.Lab]))
+corrplot.mixed(cor(yDat.RLTest.noF[[1]][cond[[1]][[1]],C.Lab]))
+corrplot.mixed(cor(yDat.RLTest.noF[[1]][cond[[1]][[1]],C.Lab]))
+corrplot.mixed(cor(yDat[[1]][cond[[1]][[1]],C.Lab]))
+rm(list=ls())#
+#
+# read ydat#
+# lees yDat file, defineer condities (outlier met negative SSRT worden hier ook al verwijderd)#
+source('~/Desktop/Dropbox/scripts/CiRaS/scanner/Graph/FitRL-test/conditions_yDat_RLtest.R', chdir = TRUE)#
+#----------------------------------------------------------------------------------------------------------##
+# 											read in scripts#
+#----------------------------------------------------------------------------------------------------------##
+#
+# define dirs#
+scriptdir = "~/Desktop/Dropbox/GenDocuments/PHD/scripts/Graphs/Basic"#
+setwd(scriptdir)#
+source('AGfunctions2.R')#
+#
+# sourece needed files#
+setwd("~/Desktop/Dropbox/GenDocuments/PHD/scripts/Graphs/rFunctions2/R")#
+#
+ # source the scripts for beta-normalization#
+ 	a=list.files()#
+ 	for (b in 1:length(a))#
+ 	{ source(a[b])}
+ww, ll, wl - no subjects have to be left out, N(min trials)=19#
+cond1 = list(ewwL,ewwR,ellL,ellR,eBwlL,eBwlR,eMwlL,eMwlR,eSwlL,eSwlR)#
+names(cond1)=c('ewwL','ewwR','ellL','ellR','BwlL','BwlR','MwlL','MwlR','SwlL','SwlR')#
+# avoid-approach p=pure (including ac, bd), s=strong (excluding ac, bd)#
+# - no subjects have to be left out, N(min trials)=41#
+cond2 = list(epApAL, epApAR, epAvBL,epAvBR)#
+names(cond2)=c('epApAL', 'epApAR', 'epAvBL','epAvBR')#
+#
+# - no subjects have to be left out, N(min trials)=31		#
+cond3 = list(esApAL, esApAR, esAvBL,esAvBR)#
+names(cond3)=c('esApAL', 'esApAR', 'esAvBL','esAvBR')#
+#
+# combine cond 1 and 3#
+cond4=list(ewwL,ewwR,ellL,ellR,eBwlL,eBwlR,eMwlL,eMwlR,eSwlL,eSwlR,esApAL, esApAR, esAvBL,esAvBR)#
+names(cond4)=c('ewwL','ewwR','ellL','ellR','BwlL','BwlR','MwlL','MwlR','SwlL','SwlR','esApAL', 'esApAR', 'esAvBL','esAvBR')
+MGO=c("PvmPFCNoventri" ,"preSMAsmall", #
+		"maxSTN25exc","GPe30exc","maxGPi30exc", "DLPFCposterior" ,#
+		"Thalamus40exc","PstriatumNoVentri","MotorBA4")#
+# direct + indirect + hyperdirect	(winning model ww,ll, wl and avoid-appraoch strong errors +correct)		#
+Model=makeMG(dg=DAG(#
+					PstriatumNoVentri~ preSMAsmall +PvmPFCNoventri + DLPFCposterior,#
+					maxSTN25exc~preSMAsmall +PvmPFCNoventri+ DLPFCposterior,#
+					GPe30exc~maxSTN25exc,#
+					maxGPi30exc~PstriatumNoVentri+maxSTN25exc+GPe30exc,#
+					Thalamus40exc~maxGPi30exc,#
+					MotorBA4~Thalamus40exc			#
+					),ug=UG(~preSMAsmall*PvmPFCNoventri*DLPFCposterior))#
+C.Lab = MGO#
+cond=cond4
+EwwL=list() #
+EwwR=list()#
+EllL=list()#
+EllR=list()#
+EBwlL=list()#
+EBwlR=list()#
+EMwlL=list()#
+EMwlR=list()#
+ESwlL=list()#
+ESwlR=list()#
+EsApAL=list()#
+EsApAR=list()#
+EsAvBL=list()#
+EsAvBR=list()#
+for (i in 1:length(yDat))#
+	{#
+		EwwL[[i]]=yDat[[i]][cond[[1]][[i]],C.Lab]#
+		EwwR[[i]]=yDat[[i]][cond[[2]][[i]],C.Lab]#
+		EllL[[i]]=yDat[[i]][cond[[3]][[i]],C.Lab]#
+		EllR[[i]]=yDat[[i]][cond[[4]][[i]],C.Lab]#
+		EBwlL[[i]]=yDat[[i]][cond[[5]][[i]],C.Lab]#
+		EBwlR[[i]]=yDat[[i]][cond[[6]][[i]],C.Lab]#
+		EMwlL[[i]]=yDat[[i]][cond[[7]][[i]],C.Lab]#
+		EMwlR[[i]]=yDat[[i]][cond[[8]][[i]],C.Lab]#
+		ESwlL[[i]]=yDat[[i]][cond[[9]][[i]],C.Lab]#
+		ESwlR[[i]]=yDat[[i]][cond[[10]][[i]],C.Lab]#
+		EsApAL[[i]]=yDat[[i]][cond[[11]][[i]],C.Lab]#
+		EsApAR[[i]]=yDat[[i]][cond[[12]][[i]],C.Lab]#
+		EsAvBL[[i]]=yDat[[i]][cond[[13]][[i]],C.Lab]#
+		EsAvBR[[i]]=yDat[[i]][cond[[14]][[i]],C.Lab]
+EwwL
+}
+for (i in 1:length(yDat))#
+	{#
+		EwwL[[i]]=yDat[[i]][cond[[1]][[i]],C.Lab]#
+		EwwR[[i]]=yDat[[i]][cond[[2]][[i]],C.Lab]#
+		EllL[[i]]=yDat[[i]][cond[[3]][[i]],C.Lab]#
+		EllR[[i]]=yDat[[i]][cond[[4]][[i]],C.Lab]#
+		EBwlL[[i]]=yDat[[i]][cond[[5]][[i]],C.Lab]#
+		EBwlR[[i]]=yDat[[i]][cond[[6]][[i]],C.Lab]#
+		EMwlL[[i]]=yDat[[i]][cond[[7]][[i]],C.Lab]#
+		EMwlR[[i]]=yDat[[i]][cond[[8]][[i]],C.Lab]#
+		ESwlL[[i]]=yDat[[i]][cond[[9]][[i]],C.Lab]#
+		ESwlR[[i]]=yDat[[i]][cond[[10]][[i]],C.Lab]#
+		EsApAL[[i]]=yDat[[i]][cond[[11]][[i]],C.Lab]#
+		EsApAR[[i]]=yDat[[i]][cond[[12]][[i]],C.Lab]#
+		EsAvBL[[i]]=yDat[[i]][cond[[13]][[i]],C.Lab]#
+		EsAvBR[[i]]=yDat[[i]][cond[[14]][[i]],C.Lab]#
+	}
+EwwL
+str(EwwL)
+rm(list=ls())#
+#
+# read ydat#
+# lees yDat file, defineer condities (outlier met negative SSRT worden hier ook al verwijderd)#
+source('~/Desktop/Dropbox/scripts/CiRaS/scanner/Graph/FitRL-test/conditions_yDat_RLtest.R', chdir = TRUE)#
+#----------------------------------------------------------------------------------------------------------##
+# 											read in scripts#
+#----------------------------------------------------------------------------------------------------------##
+#
+# define dirs#
+scriptdir = "~/Desktop/Dropbox/GenDocuments/PHD/scripts/Graphs/Basic"#
+setwd(scriptdir)#
+source('AGfunctions2.R')#
+#
+# sourece needed files#
+setwd("~/Desktop/Dropbox/GenDocuments/PHD/scripts/Graphs/rFunctions2/R")#
+#
+ # source the scripts for beta-normalization#
+ 	a=list.files()#
+ 	for (b in 1:length(a))#
+ 	{ source(a[b])}#
+#----------------------------------------------------------------------------------------------------------##
+# 											define conditions#
+#----------------------------------------------------------------------------------------------------------##
+#
+# error + correct trials#
+#
+# ww, ll, wl - no subjects have to be left out, N(min trials)=19#
+cond1 = list(ewwL,ewwR,ellL,ellR,eBwlL,eBwlR,eMwlL,eMwlR,eSwlL,eSwlR)#
+names(cond1)=c('ewwL','ewwR','ellL','ellR','BwlL','BwlR','MwlL','MwlR','SwlL','SwlR')#
+# avoid-approach p=pure (including ac, bd), s=strong (excluding ac, bd)#
+# - no subjects have to be left out, N(min trials)=41#
+cond2 = list(epApAL, epApAR, epAvBL,epAvBR)#
+names(cond2)=c('epApAL', 'epApAR', 'epAvBL','epAvBR')#
+#
+# - no subjects have to be left out, N(min trials)=31		#
+cond3 = list(esApAL, esApAR, esAvBL,esAvBR)#
+names(cond3)=c('esApAL', 'esApAR', 'esAvBL','esAvBR')#
+#
+# combine cond 1 and 3#
+cond4=list(ewwL,ewwR,ellL,ellR,eBwlL,eBwlR,eMwlL,eMwlR,eSwlL,eSwlR,esApAL, esApAR, esAvBL,esAvBR)#
+names(cond4)=c('ewwL','ewwR','ellL','ellR','BwlL','BwlR','MwlL','MwlR','SwlL','SwlR','esApAL', 'esApAR', 'esAvBL','esAvBR')	#
+#----------------------------------------------------------------------------------------------------------##
+# 											Masks and model#
+#----------------------------------------------------------------------------------------------------------#	#
+MGO=c("PvmPFCNoventri" ,"preSMAsmall", #
+		"maxSTN25exc","GPe30exc","maxGPi30exc", "DLPFCposterior" ,#
+		"Thalamus40exc","PstriatumNoVentri","MotorBA4")#
+# direct + indirect + hyperdirect	(winning model ww,ll, wl and avoid-appraoch strong errors +correct)		#
+Model=makeMG(dg=DAG(#
+					PstriatumNoVentri~ preSMAsmall +PvmPFCNoventri+ DLPFCposterior,#
+					maxSTN25exc~preSMAsmall +PvmPFCNoventri+ DLPFCposterior,#
+					GPe30exc~PstriatumNoVentri,#
+					maxGPi30exc~PstriatumNoVentri+GPe30exc+maxSTN25exc,#
+					Thalamus40exc~maxGPi30exc,#
+					MotorBA4~ Thalamus40exc			#
+					),ug=UG(~preSMAsmall*PvmPFCNoventri*DLPFCposterior))#
+C.Lab = MGO#
+cond=cond4
+EwwL=list() #
+EwwR=list()#
+EllL=list()#
+EllR=list()#
+EBwlL=list()#
+EBwlR=list()#
+EMwlL=list()#
+EMwlR=list()#
+ESwlL=list()#
+ESwlR=list()#
+EsApAL=list()#
+EsApAR=list()#
+EsAvBL=list()#
+EsAvBR=list()#
+for (i in 1:length(yDat))#
+	{#
+		EwwL[[i]]=yDat[[i]][cond[[1]][[i]],C.Lab]#
+		EwwR[[i]]=yDat[[i]][cond[[2]][[i]],C.Lab]#
+		EllL[[i]]=yDat[[i]][cond[[3]][[i]],C.Lab]#
+		EllR[[i]]=yDat[[i]][cond[[4]][[i]],C.Lab]#
+		EBwlL[[i]]=yDat[[i]][cond[[5]][[i]],C.Lab]#
+		EBwlR[[i]]=yDat[[i]][cond[[6]][[i]],C.Lab]#
+		EMwlL[[i]]=yDat[[i]][cond[[7]][[i]],C.Lab]#
+		EMwlR[[i]]=yDat[[i]][cond[[8]][[i]],C.Lab]#
+		ESwlL[[i]]=yDat[[i]][cond[[9]][[i]],C.Lab]#
+		ESwlR[[i]]=yDat[[i]][cond[[10]][[i]],C.Lab]#
+		EsApAL[[i]]=yDat[[i]][cond[[11]][[i]],C.Lab]#
+		EsApAR[[i]]=yDat[[i]][cond[[12]][[i]],C.Lab]#
+		EsAvBL[[i]]=yDat[[i]][cond[[13]][[i]],C.Lab]#
+		EsAvBR[[i]]=yDat[[i]][cond[[14]][[i]],C.Lab]#
+	}
+load('~/Desktop/plots_stan/workfiles_new/beta_testrl_hypdirindir.Rdat')#
+beta=beta.testRL.ce; rm(beta.testRL.ce)
+str(beta)
+beta[[1]]
+corrplot(beta[[1]][1])
+corrplot(beta[[1]][1,])
+beta[[1]][1,]
+corrplot(as.matrix(beta[[1]][1,])
+corrplot(as.matrix(beta[[1]][1,]))
+corrplot(as.matrix(beta[[1]][1,]))
+as.matrix(beta[[1]][1,])
+covList.EwwL =lapply(EwwL,cov)#
+covList.EwwR =lapply(EwwR,cov)#
+covList.EllL =lapply(EllL,cov)#
+covList.EllR =lapply(EllR,cov)#
+covList.EBwlL =lapply(EBwlL,cov)#
+covList.EBwlR =lapply(EBwlR,cov)#
+covList.EMwlL =lapply(EMwlL,cov)#
+covList.EMwlR =lapply(EMwlR,cov)#
+covList.ESwlL =lapply(ESwlL,cov)#
+covList.ESwlR =lapply(ESwlR,cov)#
+covList.esApAL =lapply(EsApAL,cov)#
+covList.esApAR =lapply(EsApAR,cov)#
+covList.esAvBL=lapply(EsAvBL,cov)#
+covList.esAvBR=lapply(EsAvBR,cov)
+covList.EwwL
+corrplot.mixed(covList.EwwL[[1]])
+covList.esAvBR
+as.matrix(beta[[1]][1,])
+str(beta)
+fitEwwL=list() #
+	fitEwwR=list()#
+	fitEllL=list()#
+	fitEllR=list()#
+	fitEBwlL=list()#
+	fitEBwlR=list()#
+	fitEMwlL=list()#
+	fitEMwlR=list()#
+	fitESwlL=list()#
+	fitESwlR=list()#
+	fitesApAL=list()#
+	fitesApAR=list()#
+	fitesAvBL=list()#
+	fitesAvBR=list()
+covList.EwwL
+dim(EwwL[[1]])[1]
+dim(EwwL[[1]])
+EwwL[[1]]
+for (i in 1:length(yDat))#
+	{#
+		fitEwwL[[i]]=fitAncestralGraph(Model, covList.EwwL[[i]],dim(EwwL[[i]])[1])#
+		fitEwwR[[i]]=fitAncestralGraph(Model, covList.EwwR[[i]],dim(EwwR[[i]])[1])#
+		fitEllL[[i]]=fitAncestralGraph(Model, covList.EllL[[i]],dim(EllL[[i]])[1])#
+		fitEllR[[i]]=fitAncestralGraph(Model, covList.EllR[[i]],dim(EllR[[i]])[1])#
+		fitEBwlL[[i]]=fitAncestralGraph(Model, covList.EBwlL[[i]],dim(EBwlL[[i]])[1])#
+		fitEBwlR[[i]]=fitAncestralGraph(Model, covList.EBwlR[[i]],dim(EBwlR[[i]])[1])#
+		fitEMwlL[[i]]=fitAncestralGraph(Model,covList.EMwlL[[i]],dim(EMwlL[[i]])[1])#
+		fitEMwlR[[i]]=fitAncestralGraph(Model,covList.EMwlR[[i]],dim(EMwlR[[i]])[1])#
+		fitESwlL[[i]]=fitAncestralGraph(Model,covList.ESwlL[[i]],dim(ESwlL[[i]])[1])#
+		fitESwlR[[i]]=fitAncestralGraph(Model,covList.ESwlR[[i]],dim(ESwlR[[i]])[1])#
+		fitesApAL[[i]]=fitAncestralGraph(Model,covList.esApAL[[i]],dim(EsApAL[[i]])[1])#
+		fitesApAR[[i]]=fitAncestralGraph(Model,covList.esApAR[[i]],dim(EsApAR[[i]])[1])#
+		fitesAvBL[[i]]=fitAncestralGraph(Model,covList.esAvBL[[i]],dim(EsAvBL[[i]])[1])#
+		fitesAvBR[[i]]=fitAncestralGraph(Model,covList.esAvBR[[i]],dim(EsAvBR[[i]])[1])#
+	}
+ag.theta(fitEwwL[[1]])
+?ag.theta
+ag.theta
+fitEwwL[[1]]$Bhat
+beta[[1]][1,]
+var.g.EwwL[,,1]
+ag.theta(fitEwwL[[1]])
+fitAncestralGraph
+rownames(Model)
+S=covList.EwwL[[1]]
+S
+nam=rownames(S)
+nam
+nod=rownames(Model)
+instersect(nam,nod)
+intersect(nam, nod)
+sek=intersect(nam, nod)
+S[sek, sek, drop = FALSE]
+S <- S[sek, sek, drop = FALSE]
+fitAncestralGraph
+amat=Model
+amat[sek, sek, drop = FALSE]
+amat <- amat[sek, sek, drop = FALSE]
+icfmag
+mag=amat
+unmakeMG(mag)
+p <- nrow(S)#
+    temp <- unmakeMG(mag)
+mag.ug <- temp$ug#
+    mag.dag <- temp$dg#
+    mag.bg <- temp$bg
+mag.dag
+p
+diag(diag(S))
+S
+cor(yDat.RLTest.noF[[1]][cond[[1]][[1]],C.Lab])
+covList.EwwL[[1]]
+Omega <- diag(diag(S))
+dimnames(Omega) <- dimnames(S)
+diag(p)
+p
+B <- diag(p)#
+    dimnames(B) <- dimnames(S)
+(1:p)[0 == apply(mag.dag + mag.bg, 2, sum)]
+mag.bg
+apply(mag.dag + mag.bg, 2, sum)
+UG.part <- (1:p)[0 == apply(mag.dag + mag.bg, 2, sum)]
+UG.part
+length(UG.part)
+fitConGraph(mag.ug[UG.part, UG.part, drop = FALSE], #
+            S[UG.part, UG.part, drop = FALSE], p + 1, tol = tol)$Shat
+tol = 1e-06
+itConGraph(mag.ug[UG.part, UG.part, drop = FALSE], #
+            S[UG.part, UG.part, drop = FALSE], p + 1, tol = tol)$Shat
+fitConGraph(mag.ug[UG.part, UG.part, drop = FALSE], #
+            S[UG.part, UG.part, drop = FALSE], p + 1, tol = tol)$Shat
+Lambda.inv <- fitConGraph(mag.ug[UG.part, UG.part, drop = FALSE], #
+            S[UG.part, UG.part, drop = FALSE], p + 1, tol = tol)$Shat
+Lambda.inv
+Omega
+UG.part
+Omega[UG.part, UG.part] <- Lambda.inv
+Omega
+amat
+nrow(amat)
+vector(p, mode = "list")
+1:p
+amat
+pa.each.node <- function(amat) {#
+        p <- nrow(amat)#
+        b <- vector(p, mode = "list")#
+        ip <- 1:p#
+        for (i in 1:p) b[[i]] <- ip[amat[, i] == 1]#
+        b#
+    }
+pa.each.node
+mag.bg
+spo <- pa.each.node(mag.bg)
+spo
+nsp <- pa.each.node(cmpGraph(mag.bg))
+nsp
+cmpGraph(mag.bg)
+pa.each.node(mag.dag)
+mag.dag
+spo <- pa.each.node(mag.bg)#
+    nsp <- pa.each.node(cmpGraph(mag.bg))#
+    pars <- pa.each.node(mag.dag)#
+    i <- 0
+i <- i + 1
+Omega.old <- Omega
+Omega.old
+B.old
+B
+B.old <- B
+setdiff(1:p, UG.part)
+UG.part
+pars
+spov
+spo
+i <- 0#
+    repeat {#
+        i <- i + 1#
+        Omega.old <- Omega#
+        B.old <- B#
+        for (v in setdiff(1:p, UG.part)) {#
+            parv <- pars[[v]]#
+            spov <- spo[[v]]#
+            if (length(spov) == 0) {#
+                if (length(parv) != 0) {#
+                  if (i == 1) {#
+                    B[v, parv] <- -S[v, parv] %*% solve(S[parv, #
+                      parv])#
+                    Omega[v, v] <- S[v, v] + B[v, parv] %*% S[parv, #
+                      v]#
+                  }#
+                }#
+            }#
+            else {#
+                if (length(parv) != 0) {#
+                  O.inv <- matrix(0, p, p)#
+                  O.inv[-v, -v] <- solve(Omega[-v, -v])#
+                  Z <- O.inv[spov, -v] %*% B[-v, ]#
+                  lpa <- length(parv)#
+                  lspo <- length(spov)#
+                  XX <- matrix(0, lpa + lspo, lpa + lspo)#
+                  XX[1:lpa, 1:lpa] <- S[parv, parv]#
+                  XX[1:lpa, (lpa + 1):(lpa + lspo)] <- S[parv, #
+                    ] %*% t(Z)#
+                  XX[(lpa + 1):(lpa + lspo), 1:lpa] <- t(XX[1:lpa, #
+                    (lpa + 1):(lpa + lspo)])#
+                  XX[(lpa + 1):(lpa + lspo), (lpa + 1):(lpa + #
+                    lspo)] <- Z %*% S %*% t(Z)#
+                  YX <- c(S[v, parv], S[v, ] %*% t(Z))#
+                  temp <- YX %*% solve(XX)#
+                  B[v, parv] <- -temp[1:lpa]#
+                  Omega[v, spov] <- temp[(lpa + 1):(lpa + lspo)]#
+                  Omega[spov, v] <- Omega[v, spov]#
+                  temp.var <- S[v, v] - temp %*% YX#
+                  Omega[v, v] <- temp.var + Omega[v, spov] %*% #
+                    O.inv[spov, spov] %*% Omega[spov, v]#
+                }#
+                else {#
+                  O.inv <- matrix(0, p, p)#
+                  O.inv[-v, -v] <- solve(Omega[-v, -v])#
+                  Z <- O.inv[spov, -v] %*% B[-v, ]#
+                  XX <- Z %*% S %*% t(Z)#
+                  YX <- c(S[v, ] %*% t(Z))#
+                  Omega[v, spov] <- YX %*% solve(XX)#
+                  Omega[spov, v] <- Omega[v, spov]#
+                  temp.var <- S[v, v] - Omega[v, spov] %*% YX#
+                  Omega[v, v] <- temp.var + Omega[v, spov] %*% #
+                    O.inv[spov, spov] %*% Omega[spov, v]#
+                }#
+            }#
+        }#
+        if (sum(abs(Omega.old - Omega)) + sum(abs(B.old - B)) < #
+            tol) #
+            break#
+    }
+Omega
+B
+solve(B) %*% Omega %*% solve(t(B))
+covList.EwwL[[1]]
+Sigma <- solve(B) %*% Omega %*% solve(t(B))
+cor(yDat[[1]][cond[[1]][[1]],C.Lab])
+Sigma <- solve(B) %*% Omega %*% solve(t(B))
+Lambda <- Omega
+Lambda[-UG.part, -UG.part] <- 0
+Omega[UG.part, UG.part] <- 0
+Sigma
+list(Sigmahat = Sigma, Bhat = B, Omegahat = Omega, #
+        Lambdahat = Lambda, iterations = i)
+corrplot.mixed(Sigma)
+corrplot.mixed(Sigma)
+names(yDat[[1]])
+names(yDat)[1]
+names(cond)[1]
+names(cond)[1][1]
+names(cond[[1]])[1]
+clear
+clear()
+cor(yDat[[1]][cond[[1]][[1]],C.Lab])
+correlation matrix ppn 1 winning model nodes#
+cor(yDat[[1]][cond[[1]][[1]],C.Lab])
+str(covList.EwwL)
+correlation matrix ppn 1 winning model nodes#
+cor(yDat[[1]][cond[[1]][[1]],C.Lab]) # ewwL -condition#
+# covariance matrix ppn1 winning model nodes#
+covList.EwwL[[1]] # ewwL -condition
+correlation matrix ppn 1 winning model nodes#
+cor(yDat[[1]][cond[[1]][[1]],C.Lab]) # ewwL -condition#
+# covariance matrix ppn1 winning model nodes#
+covList.EwwL[[1]] # ewwL -condition
+fitEwwL
+fitEwwL[[1]]
+correlation matrix ppn 1 winning model nodes#
+cor(yDat[[1]][cond[[1]][[1]],C.Lab]) # ewwL -condition#
+# covariance matrix ppn1 winning model nodes#
+covList.EwwL[[1]] # ewwL -condition#
+# estimated paramters with fitAncestralGraph#
+fitEwwL[[1]] # ewwL -condition
+rm(list=ls())
+load("/Users/sarajahfari/Desktop/Dropbox/GenDocuments/PHD/scripts/Graphs/ag/data/dat.RData")
+ls()
+dat
+str(dat)
+dat[1,]
+load("/Users/sarajahfari/Desktop/Dropbox/GenDocuments/PHD/scripts/Graphs/ag/data/vision.RData")
+ls()
+subList
+str(subList)
+cov(subList[[1]])
+subList[[1]]
+fitAncestralGraph
+fitAG <-#
+function (subList, cond = NA, label = NA, amat = NA, alpha = 0.1, #
+    holm = TRUE, lambda = 1e-04) #
+{#
+    dropCol <- function(x, name) x[, -which(names(x) == name)]#
+    if (!is.na(cond[1])) #
+        data <- select.cond.ag(subList, cond)#
+    else data <- subList#
+    data <- lapply(data, dropCol, "type")#
+    nSub <- length(data)#
+    dagList <- list()#
+    nV <- dim(data[[1]])[2]#
+    if (is.na(label[1])) {#
+        label <- names(subList[[1]])#
+        if ("type" %in% label) #
+            label <- label[-which(label == "type")]#
+    }#
+	if (is.na(amat[1])) #
+        dagList <- make.dag.ag(data, label = label, alpha = alpha, #
+            holm = holm)#
+    else for (i in 1:nSub) dagList[[i]] <- amat#
+    agList <- lapply(dagList, makeMG)#
+    changeColNames <- function(A, label) {#
+        colnames(A) <- label#
+        return(A)#
+    }#
+    if (!is.na(label[1])) #
+        data <- lapply(data, changeColNames, label)#
+    covList <- lapply(data, cov)#
+    covList.test <- any(lapply(covList, is.positive.definite) == #
+        FALSE)#
+    if (covList.test) {#
+        covList.bad <- which(lapply(covList, is.positive.definite) == #
+            FALSE)#
+        covList[covList.bad] <- lapply(covList[covList.bad], #
+            make.positive.definite)#
+        if (length(covList.bad) >= 1) #
+            warn <- paste("covariance matrices", covList.bad, #
+                "are ill-conditioned")#
+    }#
+    else warn = NULL#
+    trialList <- as.list(sapply(data, dim)[1, ])#
+    fitList <- list()#
+    aicList <- list()#
+    logList <- list()#
+    fitBeta <- list()#
+    fitOmega <- list()#
+    fitLambda <- list()#
+    logLikelihood <- list()#
+    for (i in 1:nSub) {#
+        fitList[[i]] <- fitAncestralGraph(agList[[i]], covList[[i]], #
+            trialList[[i]])#
+        fitList[[i]]$Lhat <- ginv(fitList[[i]]$Lhat)#
+        fitList[[i]]$Lhat[abs(fitList[[i]]$Lhat)<10^-7] <- 0#
+        fitList[[i]]$Ohat[abs(fitList[[i]]$Ohat)<10^-7] <- 0#
+        aicList[[i]] <- aic.ag(fitList[[i]], covList[[i]], trialList[[i]])$aic#
+        if (i == 1) #
+            nPar <- length(ag.theta(fitList[[1]]))#
+        logLikelihood[[i]] <- aicList[[i]] - 2 * nPar#
+    }#
+    parameters.ag <- function(fit) {#
+        if (identical(fit$Lhat, fit$Ohat)) #
+            fit$Ohat <- matrix(0, nrow = dim(fit$Ohat)[1], ncol = dim(fit$Ohat)[1])#
+        fit$Lhat + fit$Ohat + fit$Bhat - diag(1, dim(fit$Bhat)[1])#
+    }#
+    parList <- lapply(fitList, parameters.ag)#
+    yList <- lapply(data, as.matrix)#
+    yList <- lapply(yList, "t")#
+    if (dim(fitList[[1]]$Shat)[1] < nV) {#
+        node.list <- c()#
+        for (i in 1:nV) node.list[i] <- label[i] %in% row.names(fitList[[1]]$Shat)#
+        covList.reduced <- lapply(covList, "[", node.list, node.list)#
+        yList.reduced <- lapply(yList, "[", c(,node.list))#
+    }#
+    else {#
+        covList.reduced <- covList#
+        yList.reduced <- yList#
+    }#
+    sandwich <- ag.var.group(fitList, covList.reduced, yList.reduced)#
+    if (!is.na(amat[1])) #
+        agList <- amat#
+    results <- list(ag = agList, aic = unlist(aicList), nr.obs = unlist(trialList), #
+        log.likelihood = unlist(logLikelihood), number.parameters = nPar, #
+        parameters = parList, variance = sandwich, condition = cond, #
+        warn = warn, fit.ggm = fitList)#
+    class(results) <- "ag"#
+    return(results)#
+}
+fitAG
+?fitAG
+fitAG(subList)
+make.dag.ag <-#
+function (data, label = NA, alpha = 0.1, holm = TRUE, lambda = 1e-04) #
+{#
+    nV <- ncol(data[[1]])#
+    browser()#
+    skeleton <- lapply(data, skeleton.ag, holm, lambda)#
+    amat <- lapply(skeleton, dag.adjacency.ag, nV, alpha, label)#
+    return(amat)#
+}
+fitAG(subList)
+skeleton.ag <-#
+function (data, holm = TRUE, lambda = 1e-04) #
+{#
+    require(gtools)#
+    require(SIN)#
+    n <- dim(data)[2]#
+    N <- dim(data)[1]#
+    r <- n - 2#
+    V <- c(1:n)#
+    pCon <- n * (n - 1)/2#
+    connect <- combinations(n, 2)#
+    maxCombi <- 2^r#
+    skeleton <- array(NA, dim = c(pCon, r + 1, maxCombi))#
+    setName <- character()#
+    skeList <- list()#
+    for (con in 1:pCon) {#
+        a <- connect[con, 1]#
+        b <- connect[con, 2]#
+        for (i in 0:r) {#
+            if (i == 0) #
+                nCombi <- 1#
+            if (i > 0) {#
+                pCombi <- combinations(r, i)#
+                nCombi <- dim(pCombi)[1]#
+            }#
+            for (k in 1:nCombi) {#
+                if (i == 0) {#
+                  combi <- NULL#
+                  setName <- character()#
+                }#
+                if (i > 0) #
+                  combi <- V[-c(a, b)][pCombi[k, ]]#
+                setName <- c(setName, paste(combi, sep = "", #
+                  collapse = ""))#
+                sel <- c(a, b, combi)#
+                cov <- cov(data[, sel])#
+                if (qr(cov)$rank < dim(cov)[1]) #
+                  cov <- regularize(cov, lambda)#
+                skeleton[con, i + 1, k] <- sinUG(cov, N, holm)[1, #
+                  2]#
+            }#
+        }#
+        Tskeleton <- t(skeleton[con, , ])#
+        skeList[[paste(a, paste("-", b, sep = ""), sep = "")]] <- c(Tskeleton[!is.na(Tskeleton)])#
+        names(skeList[[con]]) <- setName#
+    }#
+    return(skeList)#
+}
+fitAG(subList)
+sin.ag <-#
+function (data, plot = TRUE, holm = TRUE, alpha = 0.1, beta = 0.5) #
+{#
+    cov <- cov(data)#
+    n <- dim(data)[1]#
+    p <- dim(data)[2]#
+    sin <- sinUG(cov, n, holm = holm)#
+    sin.lt <- sin[lower.tri(sin, diag = FALSE)]#
+    if (plot) {#
+        connect <- combinations(p, 2)#
+        lc <- dim(connect)[1]#
+        make.name <- function(a) paste(a[1], paste("-", a[2], #
+            sep = ""), sep = "")#
+        leg <- apply(connect, 1, make.name)#
+        plot(sin.lt, pch = 16, bty = "n", axes = FALSE, xlab = "edge", #
+            ylab = "P-value")#
+        axis(1, at = 1:lc, labels = leg, las = 2)#
+        axis(2, at = c(0.2, 0.4, 0.6, 0.8, 1), labels = TRUE)#
+        lines(c(1, lc), c(alpha, alpha), col = "gray")#
+        lines(c(1, lc), c(beta, beta), col = "gray")#
+        name <- deparse(substitute(data))#
+        title(main = paste(attr(data, "cond")), font.main = 1)#
+        text(1, 0.15, "0.1", col = "gray")#
+        text(1, 0.55, "0.5", col = "gray")#
+    }#
+    names(sin.lt) <- leg#
+    invisible(sin.lt)#
+}
+fitAG(subList)
+fitAG(subList)
+dag.adjacency.ag <-#
+function (skel, alpha = 0.1, label = NA) #
+{#
+    p <- length(skel)#
+    n <- (1 + sqrt(1 + 8 * p))/2#
+    A <- array(0, dim = c(n, n))#
+    ug <- ug.ag(skel, alpha)#
+    nE <- length(ug)#
+    nV <- n#
+    A <- make.adjacency.matrix.ag(ug, label = label)#
+    colliders <- collider.set.ag(skel, alpha = 0.5)#
+    if (any(sapply(colliders, length) > 0)) #
+        colliderNodes <- which(sapply(colliders, length) > 1)#
+    for (i in colliderNodes) {#
+        nc <- length(colliders[[i]])#
+        for (k in 1:nc) {#
+            if (i > colliders[[i]][k]) #
+                A[i, colliders[[i]][k]] <- 0#
+        }#
+    }#
+    return(A)#
+}
+fitAG(subList)
+ls()
+make.dag.ag
+fitAG
